@@ -7,7 +7,7 @@ from config.config import get_config, load_config, restore_config_default, save_
 
 config_itens = get_config()
 def create_widgets(tab):
-    font = ("Helvetica", 11)
+    font = ("Helvetica", 12)
     font_bold = ("Helvetica", 11, "bold")
 
     ttk.Label(tab, text="Prefixo para buscar o nome do arquivo:", font=font).grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(0, 5))
@@ -51,8 +51,8 @@ def create_widgets(tab):
         restore_config_default()
         update_inputs()
 
-    save_button = ttk.Button(tab, text="Salvar Configuração", command=new_config_save, style="primary.TButton")
+    save_button = ttk.Button(tab, text="Salvar Configuração", command=new_config_save, style="primary.TButton", cursor="hand2")
     save_button.grid(row=7, column=0, columnspan=1, sticky=tk.W+tk.E, pady=(0, 10))
     
-    restore_button = ttk.Button(tab, text="Restaurar Padrões", command=restore_config, style="secondary.TButton")
+    restore_button = ttk.Button(tab, text="Restaurar Padrões", command=restore_config, style="secondary.TButton", cursor="hand2")
     restore_button.grid(row=7, column=2, columnspan=1, sticky=tk.W+tk.E, pady=(0, 10))

@@ -1,17 +1,18 @@
 import tkinter as tk
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
+from screens.declarations import declarations
 from screens.tutorial import create_tutorial
 from screens.ui_config import create_widgets
-from screens.home import home
+from screens.certificates import certificates
+
 if __name__ == '__main__':
+    # Configura a Janela
     root = tk.Tk()
-    root.title('Ferramenta de Divisão de Certificados (pdf)')
+    root.title('Ferramenta de Divisão de Certificados e Declarações (pdf)')
     root.iconbitmap('icon.ico')
     root.resizable(False, False)
 
-    frame = ttk.Frame(root, padding="10")
-    frame.grid(column=2, row=14, sticky=(tk.N, tk.W, tk.E, tk.S))
     # Criar o notebook (guias)
     notebook = ttk.Notebook(root, bootstyle="dark", padding="0 10 0 0")
     notebook.grid(column=2, row=14, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -19,11 +20,18 @@ if __name__ == '__main__':
     tab1 = ttk.Frame(notebook, padding="15")
     tab2 = ttk.Frame(notebook, padding="15")
     tab3 = ttk.Frame(notebook, padding="15")
-    home(root, tab1)
-    create_widgets(tab2)
-    create_tutorial(tab3)
-    notebook.add(tab1, text="Inicio")
-    notebook.add(tab2, text="Configurações")
-    notebook.add(tab3, text="Sobre")
+    tab4 = ttk.Frame(notebook, padding="15")
+    # Inicial o conteúdo das guais (tabs)
+    certificates(root, tab1)
+    declarations(root, tab2)
+    create_widgets(tab3)
+    create_tutorial(tab4)
 
+    # Adiciona as Guias ao Notebook
+    notebook.add(tab1, text="Certificados")
+    notebook.add(tab2, text="Declarações")
+    notebook.add(tab3, text="Configurações")
+    notebook.add(tab4, text="Sobre")
+    
+    # Loop do app.
     root.mainloop()

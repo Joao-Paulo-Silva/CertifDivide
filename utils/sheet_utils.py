@@ -2,6 +2,7 @@ import os
 import openpyxl
 import ezodf
 
+# Pega os nomes do arquivo pela coluna
 def extract_column_by_header(sheet_file, header):
     _, ext = os.path.splitext(sheet_file)
     
